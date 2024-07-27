@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-8 offset-2">
     <h3 class="mt-2">update a listing</h3>
-    <form action="/listings/<%= listing._id %>?_method=PUT" method="post" class="needs-validation" novalidate enctype="multipart/form-data">
+    <form method="post" action="/listings/<%= listing._id %>?_method=PUT" enctype="multipart/form-data" class="needs-validation" novalidate enctype="application/x-www-form-urlencoded">
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
             <input name="listing[title]" type="text" value="<%= listing.title %>" class="form-control" required>
@@ -24,13 +24,15 @@
                 Please enter a good description.
             </div>
         </div>
+
+        <div class="mb-3">
+            Existing image <br>
+            <img src="<%= originalImageUrl %>" alt="Existing listing image">
+        </div>
         
         <div class="mb-3">
-            <label for="Image" class="form-label">Image URL</label>
-            <input name="listing[image]" type="text" value="<%= listing.image %>" class="form-control" required>
-            <div class="valid-feedback">
-                Please make sure to have a valid image.
-            </div>
+            <label for="Image" class="form-label">Upload new image</label>
+            <input name="listing[image]" type="file" class="form-control">
         </div>
         
         <div class="row">
